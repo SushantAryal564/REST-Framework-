@@ -1,0 +1,28 @@
+
+  
+
+
+Authentication
+  Token Authentication:
+  This authentication scheme uses a simple token based HTTP Authentication schema. Token authentication is appropriate for client server setup, such a native desktop and mobile clients.
+
+  To use the Token Authentication scheme you'll need to configure the authentication class to include Token Authentication and additionally inclused rest_framework.authtoken in your installed_apps setting.
+
+  Make suere to run maange.py migrate after changing your setting. The rest_framework.authtoken app provide Django databasae migrations.
+
+  If successful authentication, Token Authentication provide the following credentials.
+  request.user will be Django user instance.
+  request.auth will be a rest_framework.authtoken.models Token instance.
+  Unauthenticated response that are denied permission will result in an HTTP 401
+  Unauthorized response with an appropriate WWW Authnticated header.
+
+  The http command line tool may be useful for testing token authentication API.
+
+  If you use TokenAuthetication in production you must ensure that your API is only available in web.
+
+  Generate Token
+  . Using Admin Application
+  . Uisng Django maange.py command
+  python manage.py drf_create_token<username> This command will return API token for the given user or create a Token if token doens't exists for user.
+  . By exposing an API endpoint
+  . Using Signals
