@@ -14,8 +14,6 @@ def student_create(request):
     pythondata = JSONParser().parse(stream)
     serializer = StudentSerializers(data = pythondata)
     if serializer.is_valid():
-      print("I am valid")
-      print("_________________________")
       serializer.save()
       res={'msg':'Data created'}
       json_data = JSONRenderer().render(res);
